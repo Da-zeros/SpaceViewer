@@ -1,14 +1,40 @@
-<form action="/auth/signup" method="POST">
-   <label> Username
-      <input type="text" name="username">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
+<div class="big-container">
+    <div class="container">
+        <header>
+            <div class="logo">
+               <h1><a href="/">Space viewer</a></h1>
+            </div>
+        </header>
+        
+        <section>
+            <div class="contForm">
+               <form action="/auth/signup" method="POST">
+                  <h3>Sign In</h3>
 
-   <button type="submit">Submit</button>
-</form>
+                  <div class="form-group">
+                     <label for="">Username</label>
+                     <input type="text" name="username">
+                  </div>
 
-{{#if errorMessage}}
-   {{errorMessage}}
-{{/if}}
+                  <div class="form-group">
+                     <label for="">Password</label>
+                     <input type="password" name="password">
+                  </div>
+                  <div class="form-group">
+                     {{#if errorMessage}}
+                        {{errorMessage}}
+                     {{/if}}
+                  </div>
+                  <button class="sub-btn" type="submit">Submit</button>
+                  <p>Already have an account?<a href="/auth/login">Login</a></p>
+               </form>
+            </div>
+            
+
+            
+        </section>
+        
+        
+        <video src="../videos/earth.mp4" autoplay muted loop></video>
+    </div>
+</div>
