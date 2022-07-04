@@ -5,6 +5,7 @@ function signup(req, res){
     res.render("auth/signup");
 }
 
+
 async function signupPost(req, res){
 
     const { username, password } = req.body;
@@ -69,7 +70,7 @@ async function loginPost(req, res, next){
       }else{
         req.session.user = userLoged;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        return res.redirect("/");
+        return res.redirect("/home");
       }
 
     } catch (err) {

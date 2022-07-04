@@ -1,0 +1,44 @@
+<div class="big-container big-container2">
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Space viewer</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">My universe</a></li>
+                    <li><a href="#">My profile</a></li>
+                    <li><a href="/auth//logout">Log out</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="app-cont">
+            <div class="description">
+                <h2>Exoplanetas</h2>
+                <p>An exoplanet is any planet beyond our solar system. Most orbit other stars, but free-floating exoplanets, called rogue planets, orbit the galactic center and are untethered to any star</p>
+                <hr>
+                <select name="select">
+                    {{#each datosFinal}}
+                        <option value={{this.kepler_name}}>{{this.kepler_name}}</li>
+                    {{/each}}
+                </select>
+                
+                <div class="exo-desc">
+                    <div class="izq">
+                        <p><span>Name:</span></p>
+                        <p><span>Radi:</span></p>
+                        <p><span>Period:</span></p>
+                    </div>
+                   <div class="der">
+                        <p><span>Temp:</span></p>
+                        <p><span>Mass:</span></p>
+                    </div>
+                </div>
+
+            </div>
+            <div id="planet">
+                <button id="btn-exo">Crea animacion </button>
+            </div>
+        </div>
+    </div>
+</div>
