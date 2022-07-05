@@ -7,4 +7,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 router.get("/", indexController.index)
 router.get("/home", isLoggedIn,indexController.main)
 router.get("/exoplanets", isLoggedIn,indexController.exoMain)
+router.post("/exoplanets", isLoggedIn,indexController.exoMainPost)
+router.post("/myUniverse", isLoggedIn,indexController.userGetExo)
+
 module.exports = router;

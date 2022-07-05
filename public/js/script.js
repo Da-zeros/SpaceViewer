@@ -26,13 +26,17 @@ function init(){
   const material = new THREE.MeshBasicMaterial( { map: texture } );
   mesh = new THREE.Mesh(geometry, material)
   scene.add(mesh)
+  mesh.position.x = -0.5
 
-  let geometry2 = new THREE.SphereGeometry(0.2, 30, 30)
-  const texture2 = new THREE.TextureLoader().load( '../images/rojol.jpg' );
+  let randomSize = Math.random() * (0.5 - 0.1) + 0.1;
+  let geometry2 = new THREE.SphereGeometry(randomSize, 30, 30)
+  const textures = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'] 
+  const indexTextures =  Math.floor(Math.random() * textures.length); 
+  const texture2 = new THREE.TextureLoader().load( `../images/${textures[indexTextures]}` );
   const material2 = new THREE.MeshBasicMaterial( { map: texture2 } );
-  mesh2 = new THREE.Mesh(geometry, material2)
+  mesh2 = new THREE.Mesh(geometry2, material2)
   scene.add(mesh2)
-  mesh2.position.x = 0.5
+  mesh2.position.x = 0.3
 
 
   renderer = new THREE.WebGLRenderer({antialias: true})
@@ -52,11 +56,13 @@ function animate(){
    mesh2.rotation.y += 0.02/3
    renderer.render(scene, camera)
 }
+
+init()
+animate()
 /**Cojo el boton de exo */
 const btnExo = document.querySelector('#btn-exo')
 
 btnExo.addEventListener('click',(e)=>{
   e.preventDefault()
-  init()
-  animate()
+  
 })

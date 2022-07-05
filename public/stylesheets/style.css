@@ -240,6 +240,14 @@ footer p{
   background-color: #192643;
 }
 
+.big-container3{
+  background-image: url("../images/fondoCard.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 
 .api-cont{
   padding: 50px;
@@ -312,20 +320,92 @@ footer p{
 }
 
 /*Exoplanetas*/
-.app-cont{
+.app-cont, .app-contPost{
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
   margin-top:20px ;
-  padding: 0px 50px;
-  display:flex;
-
+  padding: 0px 50px; 
 }
 
-.app-cont .description{
+.app-cont h2{
+  color: white;
+  font-size: 25px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgb(114, 245, 232);
+  text-shadow: 0 0 2px rgb(114, 245, 232)
+}
+
+.app-cont p{
+  color:white;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.app-cont button{
+  margin-left: 20px;
+  width: 30%;
+}
+
+
+/*Exoplanetas Post*/
+.app-contPost {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-contPost-description{
+  color: white;
+  line-height: 50px;
+  font-size:25px ;
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-contPost-description h2{
+  color: black
+}
+
+.app-contPost-description span{
+  padding-top: 10px;
+  font-size: 28px;
+  color: orange;
+}
+
+.app-contPost-description_left{
+  padding: 20px;
+  width: 600px;
+}
+
+.app-contPost-description_right{
   
-  max-width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.app-cont .description p{
+.app-contPost-description_right p{
+  font-size: 20px;
+
+}
+
+.app-contPost-canvas{
+
+}
+
+.sub-btn2{
   
-  max-width: 500px;
+  width: 30%;
 }
+            
 
+/*************************************Canvas************************************4*/
+canvas{
+  border: solid 1px white;
+  box-shadow: 0 0 2px white;
+  width: 1200px !important;
+  height: 500px !important;
+}

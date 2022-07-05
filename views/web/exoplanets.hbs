@@ -1,4 +1,4 @@
-<div class="big-container big-container2">
+<div class="big-container big-container2 big-container3">
     <div class="container">
         <header>
             <div class="logo">
@@ -13,32 +13,17 @@
             </nav>
         </header>
         <div class="app-cont">
-            <div class="description">
-                <h2>Exoplanetas</h2>
+            <form action="/exoplanets" method="post">
+                <h2>Exoplanets</h2>
                 <p>An exoplanet is any planet beyond our solar system. Most orbit other stars, but free-floating exoplanets, called rogue planets, orbit the galactic center and are untethered to any star</p>
-                <hr>
-                <select name="select">
+                <p><span>Select a planet to see its info:</span></p>
+                <select name="exoId">
                     {{#each datosFinal}}
-                        <option value={{this.kepler_name}}>{{this.kepler_name}}</li>
+                        <option value={{this.kepid}}>{{this.kepler_name}}</li>
                     {{/each}}
                 </select>
-                
-                <div class="exo-desc">
-                    <div class="izq">
-                        <p><span>Name:</span></p>
-                        <p><span>Radi:</span></p>
-                        <p><span>Period:</span></p>
-                    </div>
-                   <div class="der">
-                        <p><span>Temp:</span></p>
-                        <p><span>Mass:</span></p>
-                    </div>
-                </div>
-
-            </div>
-            <div id="planet">
-                <button id="btn-exo">Crea animacion </button>
-            </div>
+                <button class="sub-btn" type="submit">Select</button>
+            </form>
         </div>
     </div>
 </div>
