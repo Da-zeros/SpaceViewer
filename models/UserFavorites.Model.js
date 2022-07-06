@@ -1,64 +1,85 @@
 const { Schema, model } = require("mongoose");
 const mongoose = require("mongoose")
-// ℹ️ Handles password encryption
-const bcrypt = require("bcrypt");
-
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const favoritesSchema = new Schema(
   {
-    user: {
-      type: { type: Schema.Types.ObjectId, ref: 'User' }
-      // unique: true -> Ideally, should be unique, but its up to you
-    },
-  },{
-    exoPlanetId:{
-    type:[String],
-    }
+    userObj: {type:Schema.Types.ObjectId, ref: 'User' },
+
+    exoPlanet:[{
+      name:{
+        type:String,
+        required:true,
+       
+        },
+      rad:{
+        type:String,
+        required:true,
+        
+        },
+      temp:{
+        type:String,
+        required:true,
+      
+        },
+      mass:{
+        type:String,
+        required:true,
+        
+        },
+      period:{
+        type:String,
+        required:true,
+       
+        },
+      planetId:{
+        type:String,
+        required:true,
+        
+        },
+    }],
+    
   },
-  {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
-    timestamps: true,
-  }
+  {timestamps: true}
+
+  
 );
 
 favoritesSchema.statics.createFavorites = async function(userId){
   // Search the database for a user with the username submitted in the form
-  
-  const findFavorites = await this.findOne({ usernameId:userId})
   try{
+    const findFavorites = await this.findOne({ userObj:userId})
+    
     if(!findFavorites){
-      const newFavorites = await new this({
-      user:userId,
+      
+      const newFavorites = await this.create({
+        userObj:userId,
       });
-
-      newFavorites.save()
+      
       return newFavorites
     }
-     
-   
   }catch(Error){
      console.log(Error)     
   }
 } 
-/*
-favoritesSchema.statics.addNewExo = async function(userId){
+
+favoritesSchema.statics.addNewExo = async function(userId, planet){
+  console.log(planet.planetId)
+  const planetPlanetId = planet.planetId
   
-  try{
-  
-    if(findFavoriteToUpdate){
-      
-      const filter = { userId: { $nin: [exoPlanetId] } }
-      const update = {usernameId:userId}
+  try{ 
+      const filter = {userObj:userId}
+      //,exoPlanet:{$nin:[{planetId: { $eq:planetPlanetId}}]}
+      const update = {$push:{exoPlanet:planet}}
       
       let doc = await this.findOneAndUpdate(filter,update,{new:true})
-    }
+      console.log("doc ==",doc)
     return doc
    
   }catch(Error){
      console.log(Error)     
   }
-}*/
+}
 
 const Favorites = model("Favorite", favoritesSchema);
 

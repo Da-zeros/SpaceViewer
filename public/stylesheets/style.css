@@ -1,4 +1,5 @@
 *{
+  color: white;
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
@@ -408,4 +409,93 @@ canvas{
   box-shadow: 0 0 2px white;
   width: 1200px !important;
   height: 500px !important;
+}
+
+/*************************************MY universe********************************/
+.universe-cont{
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.universe-cont-exoplanets{
+
+}
+
+.universe-cont-messageDiv{
+  padding: 50px;
+  border: 1px solid white;
+}
+
+/******************table exoPlanets*******************/
+table.blueTable {
+  margin-top: 20px;
+  border: 1px solid #4163AE;
+  background-color: #EEEEEE;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+table.blueTable i{
+  color: #000;
+  font-size: 20px;
+}
+
+table.blueTable .flex-i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+
+table.blueTable span{
+  font-weight: bolder;
+  color: #000;
+}
+
+table.blueTable th{
+  font-size: 20px;
+}
+
+table.blueTable td, table.blueTable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+table.blueTable tbody td {
+  color: black;
+  font-size: 18px;
+}
+table.blueTable tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table.blueTable thead {
+  background: #4163AE;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+table.blueTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+table.blueTable thead th:first-child {
+  border-left: none;
+}
+
+table button{
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+table button:hover{
+  font-weight: bold;
 }

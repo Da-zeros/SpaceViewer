@@ -12,7 +12,53 @@
                 </ul>
             </nav>
         </header>
-        <div class="">
-            My universe
+        <div class="universe-cont-messageDiv">
+                {{#if errorMessage}}
+                    <p>{{errorMessage}}</p>
+                {{else}}
+                    <p>{{message}}</p>
+                {{/if}}
+                
+        </div>
+        <div class="universe-cont">
+            
+            <div class="universe-cont-exoplanets">
+                
+                <h2>My exoplanets</h2>
+                <hr>
+                
+                <table class="blueTable">
+                    <thead>
+                        <tr>
+                            <th> Name</th>
+                            <th> Radius  --  Rd</th>
+                            <th> Temp  --  Fº</th>
+                            <th> Mass  --  Jupiters</th>
+                            <th> Period  --  Days</th>
+                            <th> Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each favDoc}}
+                         {{#each exoPlanet}}
+                        <tr>
+                            <form action="/myUniverse/{{planetId}}" method="post">
+                                <input type="hidden" name="name" value="{{name}}">
+                                <input type="hidden" name="planetId" value="{{planetId}}">
+                                <input type="hidden" name="period" value="{{period}}">
+                                <td><button type="submit">{{name}}</button></td>
+                            </form>
+
+                            <td>{{rad}}</td>
+                            <td>{{temp}}</td>
+                            <td>{{mass}}</td>
+                            <td>{{period}}</td>
+                            <td class="flex-i"><a href="/myUniverse/{{planetId}}"><i class="fa-solid fa-trash-can"></i></a></td>
+                        </tr>
+                        {{/each}}
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>

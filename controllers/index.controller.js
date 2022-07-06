@@ -1,6 +1,7 @@
 const { default: axios } = require("axios");
 const { create } = require("hbs");
 const Favorites = require("../models/UserFavorites.Model")
+const User = require("../models/User.model")
 
 function index(req, res) {
   res.render("index");
@@ -50,20 +51,43 @@ async function exoMainPost(req, res){
 
 /**Pagina usuario funcion que recoje los exoplanetas */
 async function userGetExo(req, res){
-  console.log('Entra en my universe',req.body)
-  console.log(req.session.user._id)
-
-  res.render('user/personal')
-
+  console.log('registro del planeta',req.body)
+  
   try{
+    await Favorites.createFavorites(req.session.user._id,)
+    const addExo = await Favorites.addNewExo(req.session.user._id, req.body)
+    if(addExo){
 
-    const newFavorites = await Favorites.createFavorites(req.session.user._id)
-    /*if(!newFavorites){
-      await Favorites.addNewExo(req.session.user._id)
-    }*/
+      const favDoc = await Favorites.find({userObj:req.session.user._id})
+      res.render('user/personal',{favDoc,message:"Exoplanet added to your universe!"})
+    }else {
+      console.log("Entra en error ya existee el planeta")
+      res.render('user/personal',{errorMessage:"This planet already is in your universe"})}
+    
   }catch(error){
     console.log(error)
   } 
+}
+
+async function userGetUniverse(req, res){
+  const favDoc = await Favorites.find({userObj:req.session.user._id})
+  console.log(favDoc)
+  
+  res.render("user/personal",{favDoc})
+}
+
+async function userDelExo(req, res){
+
+  const filter = {userObj:req.session.user._id, }
+  const update = {$pull:{exoPlanet:{planetId:req.params.delExoId}}}
+  await Favorites.findOneAndUpdate(filter,update,{new:true})
+  res.redirect("/myUniverse") 
+}
+
+async function userSelectExo(req, res){
+  
+  console.log(req.body)
+  
   
 }
 
@@ -72,5 +96,8 @@ module.exports = {
   main,
   exoMain,
   exoMainPost,
-  userGetExo
+  userGetExo,
+  userGetUniverse,
+  userDelExo,
+  userSelectExo
 };

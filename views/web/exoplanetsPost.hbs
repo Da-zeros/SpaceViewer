@@ -6,7 +6,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">My universe</a></li>
+                    <li><a href="/myUniverse">My universe</a></li>
                     <li><a href="#">My profile</a></li>
                     <li><a href="/auth/logout">Log out</a></li>
                 </ul>
@@ -25,6 +25,10 @@
                     <p><span class="orange">Description: </span>Is a gas giant exoplanet that orbits saturns mass its 112 Jupiter, it taken 23 days to complete the orbit of its star its discovey was announced in 2006</p>
                     <form action="/myUniverse" method="post">
                         <input type="hidden" name="name" value="{{planet.kepler_name}}">
+                        <input type="hidden" name="rad" value="{{planet.koi_prad}}">
+                        <input type="hidden" name="temp" value="{{planet.koi_teq}}">
+                        <input type="hidden" name="mass" value="{{planet.koi_smass}}">
+                        <input type="hidden" name="period" value="{{planet.koi_period}}">
                         <input type="hidden" name="planetId" value="{{planet.kepid}}">
                         <button class="sub-btn sub-btn2" type="submit">Save to your universe</button>
                     </form>
