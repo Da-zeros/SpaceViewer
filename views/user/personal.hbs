@@ -42,10 +42,8 @@
                         {{#each favDoc}}
                          {{#each exoPlanet}}
                         <tr>
-                            <form action="/myUniverse/{{planetId}}" method="post">
-                                <input type="hidden" name="name" value="{{name}}">
-                                <input type="hidden" name="planetId" value="{{planetId}}">
-                                <input type="hidden" name="period" value="{{period}}">
+                            <form action="/exoplanets" method="post">
+                                <input type="hidden" name="exoId" value="{{planetId}}">
                                 <td><button type="submit">{{name}}</button></td>
                             </form>
 

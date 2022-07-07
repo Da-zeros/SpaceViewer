@@ -84,12 +84,18 @@ async function userDelExo(req, res){
   res.redirect("/myUniverse") 
 }
 
-async function userSelectExo(req, res){
+async function picsPage(req, res){
+  
+  console.log("Entra en pics get")
+  
+}
+
+async function piscPagePost(req, res){
   
   console.log(req.body)
   
-  
 }
+
 
 module.exports = {
   index,
@@ -99,5 +105,6 @@ module.exports = {
   userGetExo,
   userGetUniverse,
   userDelExo,
-  userSelectExo
+  picsPage,
+  piscPagePost
 };
