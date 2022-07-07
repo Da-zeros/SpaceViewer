@@ -24,7 +24,7 @@
             
             <div class="universe-cont-exoplanets">
                 
-                <h2>My exoplanets</h2>
+                <h2 class="myUniverTitle">My exoplanets</h2>
                 <hr>
                 
                 <table class="blueTable">
@@ -58,5 +58,36 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="universe-cont-exoplanets">
+                
+                <h2 class="myUniverTitle">My pictures</h2>
+                <hr>
+                
+                <table class="blueTable">
+                    <thead>
+                        <tr>
+                            <th> Name</th>
+                            <th> Date</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each addPicOfDayList}}
+                        {{#each picOfDay}}
+                        <tr>
+                            <form action="/picOfDay" method="post">
+                                <input type="hidden" name="date" value="{{date}}">
+                                <td><button type="submit">{{picName}}</button></td>
+                            </form>
+                            <td>{{date}}</td>
+                            <td class="flex-i"><a href="/myUniverse/delPic/{{picName}}"><i class="fa-solid fa-trash-can"></i></a></td>
+                        </tr>
+                        {{/each}}
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            
         </div>
     </div>

@@ -8,6 +8,7 @@ document.addEventListener(
   false
 );
 
+
 let camera
 let scene
 let renderer

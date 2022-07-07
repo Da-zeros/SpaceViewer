@@ -1,5 +1,4 @@
 *{
-  color: white;
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
@@ -15,7 +14,7 @@ body{
 .big-container{
   width: 100%;
   height: 100vh;
-  max-width: 1400px;
+  max-width: 1700px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -217,7 +216,7 @@ footer p{
   width: 100%;
 }
 
-.sub-btn{
+.sub-btn {
   border: none;
   color: white;
   padding: 8px 15px;
@@ -420,12 +419,12 @@ canvas{
 }
 
 .universe-cont-exoplanets{
-
+  padding: 40px;
 }
 
 .universe-cont-messageDiv{
   padding: 50px;
-  border: 1px solid white;
+  
 }
 
 /******************table exoPlanets*******************/
@@ -498,4 +497,110 @@ table button{
 
 table button:hover{
   font-weight: bold;
+}
+
+/**************************Pic of the day**********************/
+
+.app-cont-pic{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-cont-pic h2{
+  color: rgb(255, 255, 255, 0.800);
+  text-shadow: 0 0 3px white;
+  font-size:2.5em;
+  padding: 40px 0 20px 0;
+}
+
+.app-cont-pic h3{
+  color: rgb(255, 255, 255, 0.766);
+  border-bottom:1px solid rgba(255, 255, 255, 0.855);
+  font-size: 1.8em;
+  margin: 20px 0 20px 0;
+}
+
+.app-cont-pic h4{
+  color: rgb(255, 255, 255, 0.666);
+  font-size: 1.5em;
+  padding: 20px 0 20px 0;
+}
+
+.app-cont-pic p{
+  color: rgb(255, 255, 255, 0.566);
+  max-width: 1300px;
+  font-size: 1.4em;
+}
+
+.imgCont{
+  border: 0.5px solid white;
+  box-shadow: 0 0 5px white;
+  margin: 20px;
+}
+
+.app-cont-pic p span{
+  color: rgb(255, 255, 255, 0.766);
+  font-weight: bold;
+}
+
+.app-cont-pic_title{
+  text-shadow: 0 0 1px white;
+}
+
+.app-cont-pic_interact{
+  width: 100%;
+  display:flex;
+  margin: 50px;
+  padding-left:200px;
+}
+
+.formContent{
+  
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.formContent p{
+  padding:10px 0;
+  color:white; 
+}
+
+
+.formContent input{
+  width: 50%;
+}
+.sub-btnPic{
+  margin-top: 10px;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px white;
+  background: teal;
+  border-radius: 20px;
+  width: 50%;
+  
+}
+
+.sub-btnPic:hover{
+  text-shadow: 0 0 10px white;
+  cursor: pointer;
+  transform: scale(0.9);
+}
+
+.extra{
+  margin: top 20px;
+  text-align: center;
+  max-width: 350px;
+}
+
+.myUniverTitle{
+  font-size: 22px;
+  color: white;
+  margin-bottom: 10px;
 }

@@ -1,4 +1,4 @@
-<div class="big-container big-container2 big-container3">
+<div class="big-container big-container2">
     <div class="container">
         <header>
             <div class="logo">
@@ -6,25 +6,40 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">My universe</a></li>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/myUniverse">My universe</a></li>
                     <li><a href="#">My profile</a></li>
-                    <li><a href="/auth//logout">Log out</a></li>
+                    <li><a href="/auth/logout">Log out</a></li>
                 </ul>
             </nav>
         </header>
         <div class="app-cont-pic">
-            <form action="/exoplanets" method="post">
-                <h2> Astronomy Picture of the Day</h2>
-                <h3>How does NASA take pictures of space?</h3>
-                <p>There are many types of technology and vehicles used to take space images. One of the most famous is the Hubble Telescope. The Hubble was designed as a long range telescope and placed in orbit around the Earth in order to get clearer photos without an atmosphere</p>
-                <p><span>Select a planet to see its info:</span></p>
-                <select name="exoId">
-                    {{#each datosFinal}}
-                        <option value={{this.kepid}}>{{this.kepler_name}}</li>
-                    {{/each}}
-                </select>
-                <button class="sub-btnPic" type="submit">Select</button>
-            </form>
+            <h2> Astronomy Picture of the Day</h2>
+            <h3>How does NASA take pictures of space?</h3>
+            <p>There are many types of technology and vehicles used to take space images. One of the most famous is the Hubble Telescope. The Hubble was designed as a long range telescope and placed in orbit around the Earth in order to get clearer photos without an atmosphere</p>
+            <h3 class="app-cont-pic_title">{{imageApiData.title}}</h3>
+            <div class="imgCont">
+                <img src="{{imageApiData.url}}" alt="">
+            </div>
+            <p><span>Description: </span>{{imageApiData.explanation}}</p>
+            <a href="/picOfDay/toUserUniverse/?picName={{imageApiData.title}}&date={{imageApiData.date}}" class="sub-btnPic extra">Save to your universe</a>
+            <div class="app-cont-pic_interact"> 
+                <form action="/picOfDay" method="post">
+                    <div class="formContent">
+                        <p>Wich photo was taken at...</p>
+                        <input type="date" id="start" name="date" min="1995-07-07" max="{{date}}">
+                    </div> 
+                    <button class="sub-btnPic" type="submit">Select</button>
+                </form>
+                <div class="universe-cont-messageDiv">
+                    {{#if errorMessage}}
+                        <p>{{errorMessage}}</p>
+                    {{else}}
+                        <p>{{message}}</p>
+                    {{/if}}
+                
+                </div>
+            </div>
         </div>
     </div>
 </div>

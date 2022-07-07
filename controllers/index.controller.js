@@ -2,6 +2,8 @@ const { default: axios } = require("axios");
 const { create } = require("hbs");
 const Favorites = require("../models/UserFavorites.Model")
 const User = require("../models/User.model")
+require('dotenv').config();
+
 
 function index(req, res) {
   res.render("index");
@@ -71,9 +73,9 @@ async function userGetExo(req, res){
 
 async function userGetUniverse(req, res){
   const favDoc = await Favorites.find({userObj:req.session.user._id})
-  console.log(favDoc)
-  
-  res.render("user/personal",{favDoc})
+  const addPicOfDayList = await Favorites.find({userObj:req.session.user._id})
+
+  res.render("user/personal",{favDoc,  addPicOfDayList})
 }
 
 async function userDelExo(req, res){
@@ -85,16 +87,54 @@ async function userDelExo(req, res){
 }
 
 async function picsPage(req, res){
-  
-  console.log("Entra en pics get")
-  
+  /**Current date*/
+  var today = new Date();
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+  const data = await 
+  axios.get(`${process.env.URL}?api_key=${process.env.API_KEY}`)
+  const imageApiData = data.data
+  console.log(imageApiData)
+  res.render("web/picOfDay",{imageApiData, date})
 }
 
 async function piscPagePost(req, res){
-  
-  console.log(req.body)
-  
+  console.log(req.body.date)
+  const filteredData = await 
+  axios.get(`${process.env.URL}?api_key=${process.env.API_KEY}&date=${req.body.date}`)
+  const filteredPic = await filteredData.data
+  console.log(filteredPic)
+  res.render("web/picOfDayPost",{filteredPic}) 
 }
+
+async function picsPageParams(req, res){
+  try{
+
+    await Favorites.createFavorites(req.session.user._id)
+    const addPicOfDay = await Favorites.addNewPic(req.session.user._id, req.query)
+    
+    if(addPicOfDay){
+      const addPicOfDayList = await Favorites.findById(req.session.user._id)
+      console.log(addPicOfDayList)
+      res.redirect("/picOfDay")
+    }
+    else{
+      res.redirect('/picOfDay',{errorMessage:"This picture already exists in your universe"})
+    }
+  }
+  catch(error){
+    console.log(error)
+  } 
+}
+
+async function userDelPic(req, res){
+  console.log(req.params.delPicId)
+  const filter = {userObj:req.session.user._id, }
+  const update = {$pull:{picOfDay:{picName:req.params.delPicId}}}
+  await Favorites.findOneAndUpdate(filter,update,{new:true})
+  res.redirect("/myUniverse") 
+}
+
 
 
 module.exports = {
@@ -106,5 +146,7 @@ module.exports = {
   userGetUniverse,
   userDelExo,
   picsPage,
-  piscPagePost
+  piscPagePost,
+  picsPageParams,
+  userDelPic
 };

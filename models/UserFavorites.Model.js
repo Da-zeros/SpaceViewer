@@ -38,6 +38,10 @@ const favoritesSchema = new Schema(
         
         },
     }],
+    picOfDay:[{
+      picName:{type:String,required:true},
+      date:{type:String,required:true}
+    }]
     
   },
   {timestamps: true}
@@ -80,6 +84,27 @@ favoritesSchema.statics.addNewExo = async function(userId, planet){
      console.log(Error)     
   }
 }
+
+
+favoritesSchema.statics.addNewPic = async function(userId, picture){
+  try{ 
+
+    let newPicdoc = await this.findOne({userObj:userId})
+    if(newPicdoc.picOfDay.find(element=>element.picName===picture.picName)){
+      
+    }
+    else{
+      const filter = {userObj:userId}
+      const update = {$push:{picOfDay:picture}}
+      const newPicdoc = await this.findOneAndUpdate(filter, update,{new:true})
+    }
+    return newPicdoc
+   
+  }catch(Error){
+     console.log(Error)     
+  }
+}
+
 
 const Favorites = model("Favorite", favoritesSchema);
 
