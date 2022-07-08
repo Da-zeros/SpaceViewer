@@ -355,6 +355,7 @@ footer p{
   padding-top: 100px;
   display: flex;
   flex-direction: column;
+  
 }
 
 .app-contPost-description{
@@ -406,8 +407,8 @@ footer p{
 canvas{
   border: solid 1px white;
   box-shadow: 0 0 2px white;
-  width: 1200px !important;
-  height: 500px !important;
+  width: 1300px !important;
+  height: 700px !important;
 }
 
 /*************************************MY universe********************************/
